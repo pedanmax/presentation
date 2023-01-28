@@ -1,0 +1,224 @@
+<!doctype html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+		<title>Presentation</title>
+
+		<link rel="stylesheet" href="dist/reset.css">
+		<link rel="stylesheet" href="dist/reveal.css">
+		<link rel="stylesheet" href="dist/theme/sky.css">
+
+		<!-- Theme used for syntax highlighted code -->
+		<link rel="stylesheet" href="plugin/highlight/monokai.css">
+	</head>
+	<body>
+		<div class="reveal">
+			<div class="slides">
+				<section class="first">
+					<h4 class="first__title">SASS preprocessor<br> What is this?</h2>
+					<img class="first__logo" src="img/logo.png" alt="sass-logo">
+				</section>
+				<section class="three">
+					<div class="block">
+						<div class="scss">
+							<h6>SCSS code</h6>
+							<pre>
+								<code class="code">
+									.title {
+										font-size: 44px;
+										text-transform: uppercase;
+										color: #fff;
+									}
+									.button {
+										border-radius: 10px;
+										padding: 5px 15px;
+										background-color: whiteblue;
+									}
+								</code>
+							</pre>
+						</div>
+						<div class="css">
+							<h6>SASS code</h6>
+							<pre>
+								<code class="code">
+									.title 
+										font-size: 44px
+										text-transform: uppercase
+										color: #fff
+
+									.button 
+										border-radius: 10px
+										padding: 5px 15px
+										background-color: whiteblue
+									
+								</code>
+							</pre>
+						</div>
+					</div>
+				</section>
+				<section>
+					<h4>Nesting Selectors</h4>
+					<img src="img/nesting-selectors.png" alt="selectors">
+				</section>
+				<section>
+					<h4>Parent Selector (&)</h4>
+					<div class="block">
+						<div class="scss">
+							<h6>scss code</h6>
+							<pre>
+								<code class="code">
+									a {
+										text-decoration: none;
+										display: inline-block;
+										background-color: lightgray;
+								
+										&:hover {
+												background-color: gray;
+										}
+									}
+								</code>
+							</pre>
+						</div>
+						<div class="css">
+							<h6>Compiled css code</h6>
+							<pre>
+								<code class="code">
+									a {
+										text-decoration: none;
+										display: inline-block;
+										background-color: lightgray;
+									}
+								
+									a:hover {
+										background-color: gray;
+									}
+								</code>
+							</pre>
+						</div>
+					</div>
+				</section>
+				<section class="fifth">
+					<h4>Variables</h4>
+					<pre>
+						<code>
+							$mainColor: #000;
+							$fontSize: 24px;
+
+							.title {
+								color: $mainColor;
+								font-size: $font-siza;
+							}
+							.subtitle {
+								color: $mainColor;
+							}
+						</code>
+					</pre>
+				</section>
+				<section class="sixth">
+					<h4>Extends</h4>
+					<img class="buttons" src="img/buttons.png" alt="similar-buttons">
+					<div class="codes">
+						<pre>
+							<code class="code">
+								.btn{
+									border-radius: 10px;
+									padding: 5px 0px;
+									text-transform: uppercase;
+									color:#fff;
+									cursor: pointer;
+									width: 150px;
+								}
+								.btn_blue{
+									background-color: blue;
+								}
+								.btn_green{
+									background-color: green;
+								}
+							</code>
+						</pre>
+						<pre>
+							<code class="code">
+								.btn{
+									border-radius: 10px;
+									padding: 5px 0px;
+									text-transform: uppercase;
+									color: #fff;
+									cursor: pointer;
+									width: 150px;
+									&_blue{
+										@extend .btn;
+										background-color: blue;
+									}
+									&_green{
+										@extend .btn;
+										background-color: green;
+									}
+								}
+							</code>
+						</pre>
+					</div >
+				</section>
+				<section class="seven">
+					<h4>Mixins</h>
+					<h6>Mixins can be used in two ways: <br> <b>Without Arguments</b> and <b>With Arguments</b>.</h6>
+				</section>
+				<section class="eight">
+					<h4>Without arguments</h4>
+					<pre>
+						<code>
+							@mixin textStyle{
+								font-size: 24px;
+								color: green;
+								font-weight: 700;
+							}
+
+							.text {
+								@include textStyle;
+							}
+						</code>
+					</pre>
+				</section>
+				<section class="nine">
+					<h4>With arguments</h4>
+					<pre>
+						<code>
+							@mixin textStyle ($fz, $color, $fw) {
+								font-size: $fz;
+								color: $color;
+								font-weight: $fw;
+							}
+
+							.text {
+								@include textStyle(16px, red, 500);
+							}
+							.title {
+								@include textStyle(24px, blue, 700);
+							}
+						</code>
+					</pre>
+				</section>
+				<section>
+					<p>Thank you for watching and good luck!</p>
+				</section>
+			</div>
+		</div>
+
+		<script src="dist/reveal.js"></script>
+		<script src="plugin/notes/notes.js"></script>
+		<script src="plugin/markdown/markdown.js"></script>
+		<script src="plugin/highlight/highlight.js"></script>
+		<script>
+			// More info about initialization & config:
+			// - https://revealjs.com/initialization/
+			// - https://revealjs.com/config/
+			Reveal.initialize({
+				hash: true,
+
+				// Learn about plugins: https://revealjs.com/plugins/
+				plugins: [ RevealMarkdown, RevealHighlight, RevealNotes ]
+			});
+		</script>
+	</body>
+</html>
